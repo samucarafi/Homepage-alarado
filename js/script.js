@@ -16,7 +16,23 @@ class Tema{
         body.style.background = this.corBody
         iconeTemas.style.background=this.corIcone
 
+        h1[0].classList.toggle('h1h3TemaEscuro')
+        h3[0].classList.toggle('h1h3TemaEscuro')
     }
+}
+
+abrirMenu= ()=>{
+    menu.style.display='flex'
+    menu.style.flexDirection='column'
+    iconeTemas.style.display='flex'
+    janela.style.height='100%'
+    janela.style.backgroundColor='white'
+}
+fecharMenu=()=>{
+    menu.style.display='none'
+    iconeTemas.style.display='none'
+    janela.style.height=''
+    janela.style.backgroundColor=''
 }
 
 const temaEscuro=new Tema('#111729','write')
@@ -25,22 +41,13 @@ const temaClaro=new Tema('white','#111729')
 hamburguer.addEventListener('click',()=>{
     hamburguer.classList.toggle('ativo')
     if(hamburguer.classList.contains('ativo')){
-    menu.style.display='flex'
-    menu.style.flexDirection='column'
-    iconeTemas.style.display='flex'
-    janela.style.height='100%'
-    janela.style.backgroundColor='white'
+        abrirMenu()
     }else{
-        menu.style.display='none'
-        iconeTemas.style.display='none'
-        janela.style.height=''
-        janela.style.backgroundColor=''
+        fecharMenu()
     }
 })
 
 iconeTemas.addEventListener('click',()=>{
-    h1[0].classList.toggle('h1h3TemaEscuro')
-    h3[0].classList.toggle('h1h3TemaEscuro')
     if(body.style.backgroundColor=="rgb(17, 23, 41)"){
         temaClaro.ativar()
     }else{temaEscuro.ativar()}
